@@ -2,20 +2,38 @@ gsap.registerPlugin(ScrollTrigger);
 
 const video = document.getElementById('scrollyVideo');
 const navbar = document.getElementById('mainNavbar');
+
 let initialized = false;
+
+// Detecção precisa de mobile/touch ou tela reduzida
+const isMobile = window.innerWidth <= 868 || ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
 if (video) {
   video.muted = true;
   video.playsInline = true;
+
+  if (isMobile) {
+    // Modo Mobile: Vídeo roda em loop continuo sem engasgar
+    video.loop = true;
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Trata autoplay bloqueado se necessário
+      });
+    }
+  } else {
+    // Modo PC: Pausa o vídeo para controle do tempo por scroll
+    video.pause();
+  }
 }
 
 function initScrollTrigger() {
-  if (initialized) return; // Evita rodar duas vezes
+  if (initialized) return;
   initialized = true;
 
   const duration = (video && !isNaN(video.duration) && video.duration > 0) ? video.duration : 10;
 
-  // Timeline principal do Scroll
+  // Timeline principal do Hero
   let tl = gsap.timeline({
     scrollTrigger: {
       trigger: "#scrollTrack",
@@ -23,18 +41,18 @@ function initScrollTrigger() {
       end: "bottom top",
       scrub: 0.3,
       pin: true,
-      pinSpacing: false,
+      pinSpacing: false, // Previne lacunas e blocos pretos na transição
       anticipatePin: 1,
       onUpdate: (self) => {
-        // Atualiza vídeo se estiver rodando no desktop
-        if (video && duration && video.readyState >= 1) {
+        // Atualiza a posição do tempo do vídeo apenas no PC
+        if (!isMobile && video && duration && video.readyState >= 1) {
           const targetTime = self.progress * duration;
           if (Math.abs(video.currentTime - targetTime) > 0.02) {
             video.currentTime = targetTime;
           }
         }
 
-        // Esconde/mostra Navbar
+        // Alterna exibição da Navbar
         if (self.progress > 0.05 && self.progress < 0.90) {
           navbar.classList.add('hidden');
         } else {
@@ -44,7 +62,7 @@ function initScrollTrigger() {
     }
   });
 
-  // 1. HERO INITIAL (0% a 15%)
+  // 1. SUMIR HERO INICIAL (0% a 15%)
   tl.to("#heroInterface", {
     opacity: 0,
     y: -40,
@@ -85,13 +103,13 @@ function initScrollTrigger() {
     0.70
   );
 
-  // 5. SUMIR VÍDEO NO FINAL DA ROLAGEM
+  // 5. TRANSITION OUT DO CONTAINER DO VÍDEO (75% a 100%)
   tl.to(".sticky-viewport", {
     opacity: 0,
     duration: 0.25
   }, 0.75);
 
-  // SEÇÕES INFERIORES
+  // ANIMAÇÃO DE ENTRADA DAS SEÇÕES INFERIORES
   gsap.utils.toArray('.normal-section').forEach(section => {
     gsap.from(section, {
       scrollTrigger: {
@@ -130,12 +148,11 @@ function initScrollTrigger() {
   ScrollTrigger.refresh();
 }
 
-// INICIALIZAÇÃO GARANTIDA:
-// Tenta rodar nos eventos de mídia, mas se demorar mais de 300ms, força a montagem do site
+// Inicialização imediata / resiliente
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
-  setTimeout(initScrollTrigger, 100);
+  setTimeout(initScrollTrigger, 50);
 } else {
-  document.addEventListener('DOMContentLoaded', () => setTimeout(initScrollTrigger, 100));
+  document.addEventListener('DOMContentLoaded', () => setTimeout(initScrollTrigger, 50));
 }
 
 if (video) {

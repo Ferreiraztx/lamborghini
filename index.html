@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Lamborghini — Engineered by Thunder</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -14,31 +14,29 @@
     <nav class="nav-links">
       <a href="#performance">Performance</a>
       <a href="#modelos">Modelos</a>
-      <a href="#aerodinamica">Aerodinâmica</a>
-      <a href="#experiencia">Ad Personam</a>
-      <a href="#tecnologia">Tecnologia</a>
+      <a href="#contato">Ad Personam</a>
     </nav>
     <a href="#contato" class="btn-nav">Configurar</a>
   </header>
 
-  <!-- SCROLL TRACK DO VÍDEO (SCROLLYTELLING) -->
+  <!-- SCROLL TRACK DO VÍDEO (HERO) -->
   <div class="scroll-track" id="scrollTrack">
     <div class="sticky-viewport">
       
-      <!-- Vídeo em Background -->
       <video 
         id="scrollyVideo" 
         class="video-background" 
-        src="video/hero-otimizado.mp4" 
-        poster="assets/poster.jpg"
         muted 
         playsinline 
-        preload="auto">
+        webkit-playsinline
+        preload="auto"
+        poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+        <source src="video/lamborghini-hero.mp4" type="video/mp4">
       </video>
 
       <div class="overlay"></div>
 
-      <!-- TELA INICIAL (HERO LAMBORGHINI) -->
+      <!-- TELA INICIAL (HERO INTERFACE) -->
       <div class="hero-interface" id="heroInterface">
         <div class="hero-left">
           <span class="tagline">SUPER SPORTS CARS — HIGH PERFORMANCE</span>
@@ -73,7 +71,7 @@
             <span>350+ km/h</span>
           </div>
           <div class="bar-item">
-            <strong>TRACÇÃO INTEGRAL</strong>
+            <strong>TRAÇÃO INTEGRAL</strong>
             <span>e-4WD Vetorização de Torque</span>
           </div>
           <div class="bar-item">
@@ -111,15 +109,14 @@
     
     <div class="glow-orb orb-1"></div>
     <div class="glow-orb orb-2"></div>
-    <div class="glow-orb orb-3"></div>
 
-    <!-- SEÇÃO: PERFORMANCE & NÚMEROS -->
+    <!-- SEÇÃO: PERFORMANCE -->
     <section class="normal-section engineering-section" id="performance">
       <div class="container">
-        <span class="badge">ENGINERING & SPEED</span>
+        <span class="badge">ENGINEERING & SPEED</span>
         <h2>Performance Absoluta</h2>
         <p class="description">
-          Sinta a aceleração brutal impulsionada por três motores elétricos aliados ao aspirado V12.
+          Sinta a aceleração brutal impulsionada por três motores elétricos aliados ao V12 aspirado.
         </p>
 
         <div class="glass-grid">
@@ -129,7 +126,7 @@
               <span class="card-unit">CV</span>
             </div>
             <h3>Potência Total</h3>
-            <p>A união perfecta entre combustão de alta rotação e torque elétrico instantâneo.</p>
+            <p>A união perfeita entre combustão de alta rotação e torque elétrico instantâneo.</p>
           </div>
 
           <div class="glass-card tilt-card">
@@ -147,7 +144,7 @@
               <span class="card-unit">km/h</span>
             </div>
             <h3>Velocidade Final</h3>
-            <p>Estabilidade inabalável em velocidades extremas graças ao assoalho com efeito solo.</p>
+            <p>Estabilidade inabalável em velocidades extremas com efeito solo.</p>
           </div>
         </div>
       </div>
@@ -156,7 +153,7 @@
     <!-- SEÇÃO: MODELOS -->
     <section class="normal-section aeronaves-section" id="modelos">
       <div class="container">
-        <span class="badge">NOSSOS SÚPER ESPORTIVOS</span>
+        <span class="badge">NOSSOS SUPER ESPORTIVOS</span>
         <h2>A Linhagem dos Touros</h2>
         <p class="description">
           Cada modelo carrega a herança de Sant'Agata Bolognese em sua forma mais pura.
@@ -205,7 +202,7 @@
       </div>
     </section>
 
-    <!-- SEÇÃO: FORMULÁRIO / CONFIGURADOR -->
+    <!-- SEÇÃO: CONTATO -->
     <section class="normal-section cta-section" id="contato">
       <div class="container">
         <div class="booking-panel">
@@ -237,7 +234,7 @@
                 </select>
               </div>
               <div class="input-group">
-                <label>CONCESSIONÁRIA MAIS PRÓXIMA</label>
+                <label>CIDADE / CIDADE MAIS PRÓXIMA</label>
                 <input type="text" placeholder="Ex: São Paulo, SP" required>
               </div>
             </div>

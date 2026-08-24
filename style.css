@@ -6,6 +6,7 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #000000;
 }
 
 body {
@@ -13,6 +14,7 @@ body {
   color: #ffffff;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
+  width: 100%;
 }
 
 /* NAVBAR GLOBAL */
@@ -24,7 +26,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 48px;
+  padding: 16px 40px;
   z-index: 100;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
   backdrop-filter: blur(12px);
@@ -39,7 +41,7 @@ body {
 }
 
 .logo {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 900;
   letter-spacing: 0.25em;
   color: #ffffff;
@@ -66,7 +68,7 @@ body {
 }
 
 .btn-nav {
-  padding: 10px 22px;
+  padding: 8px 20px;
   border: 1px solid rgba(251, 191, 36, 0.4);
   border-radius: 2px;
   color: #fbbf24;
@@ -81,7 +83,6 @@ body {
 .btn-nav:hover {
   background: #fbbf24;
   color: #000000;
-  box-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
 }
 
 /* SCROLL TRACK DO VÍDEO */
@@ -122,17 +123,18 @@ body {
   pointer-events: none;
 }
 
-/* TELA INICIAL (HERO LAMBORGHINI) */
+/* TELA INICIAL (HERO) */
 .hero-interface {
   position: absolute;
   inset: 0;
   z-index: 3;
-  padding: 100px 48px 40px 48px;
+  padding: 100px 48px 30px 48px;
   display: grid;
   grid-template-columns: 1fr 320px;
   grid-template-rows: 1fr auto;
   align-items: center;
-  opacity: 1; /* Força início visível */
+  gap: 20px;
+  opacity: 1;
   visibility: visible;
   will-change: opacity, transform, filter;
 }
@@ -147,24 +149,24 @@ body {
   color: #fbbf24;
   font-weight: 700;
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 }
 
 h1 {
-  font-size: clamp(3.2rem, 6.5vw, 6rem);
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
   font-weight: 900;
-  line-height: 0.92;
+  line-height: 0.95;
   letter-spacing: -0.03em;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
   text-transform: uppercase;
   color: #ffffff;
 }
 
 .hero-desc {
-  font-size: 1.05rem;
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   font-weight: 300;
 }
 
@@ -172,50 +174,45 @@ h1 {
   display: flex;
   align-items: center;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .route-pill {
-  padding: 14px 24px;
+  padding: 12px 22px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
   border-radius: 2px;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   letter-spacing: 0.15em;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.9);
 }
 
 .btn-solid {
-  padding: 14px 28px;
+  padding: 12px 26px;
   background: #fbbf24;
   color: #000000;
   text-decoration: none;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.15em;
   border-radius: 2px;
   transition: all 0.3s ease;
 }
 
-.btn-solid:hover {
-  background: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
-}
-
 .hero-right {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
 .feature-card {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(15px);
-  padding: 20px;
-  border-radius: 4px;
+  padding: 18px;
+  border-radius: 2px;
   border-left: 2px solid #fbbf24;
 }
 
@@ -223,12 +220,12 @@ h1 {
   font-size: 0.75rem;
   letter-spacing: 0.15em;
   color: #ffffff;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   font-weight: 700;
 }
 
 .feature-card p {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.6);
   font-weight: 300;
 }
@@ -236,9 +233,10 @@ h1 {
 .hero-bottom-bar {
   grid-column: 1 / -1;
   display: flex;
-  gap: 60px;
-  padding-top: 30px;
+  gap: 40px;
+  padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  flex-wrap: wrap;
 }
 
 .bar-item strong {
@@ -256,15 +254,15 @@ h1 {
 
 .scroll-prompt {
   position: absolute;
-  bottom: 12px;
-  right: 60px;
-  font-size: 0.7rem;
+  bottom: 16px;
+  right: 48px;
+  font-size: 0.65rem;
   letter-spacing: 0.25em;
   color: rgba(251, 191, 36, 0.6);
   font-weight: 600;
 }
 
-/* NARRATIVA DE SOBREPOSIÇÃO NO VÍDEO */
+/* NARRATIVA DE SOBREPOSIÇÃO */
 .content-layer {
   position: absolute;
   inset: 0;
@@ -287,20 +285,19 @@ h1 {
 }
 
 .narrative-step h2 {
-  font-size: clamp(2.5rem, 5.5vw, 4.8rem);
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
   font-weight: 900;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   text-transform: uppercase;
   letter-spacing: -0.02em;
   color: #ffffff;
 }
 
 .narrative-step p {
-  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-size: clamp(0.95rem, 1.3vw, 1.2rem);
   color: #fbbf24;
-  line-height: 1.6;
+  line-height: 1.5;
   font-weight: 400;
-  letter-spacing: 0.05em;
 }
 
 /* SEÇÕES INFERIORES */
@@ -308,8 +305,7 @@ h1 {
   position: relative;
   z-index: 10;
   background-color: #000000;
-  margin-top: 0;
-  padding-top: 0;
+  padding-bottom: 80px;
   overflow: hidden;
 }
 
@@ -317,20 +313,19 @@ h1 {
   position: absolute;
   border-radius: 50%;
   filter: blur(150px);
-  opacity: 0.15;
+  opacity: 0.12;
   pointer-events: none;
 }
 
-.orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, #fbbf24 0%, transparent 70%); top: 5%; left: -100px; }
-.orb-2 { width: 700px; height: 700px; background: radial-gradient(circle, #d97706 0%, transparent 70%); top: 40%; right: -150px; }
-.orb-3 { width: 600px; height: 600px; background: radial-gradient(circle, #fbbf24 0%, transparent 70%); top: 75%; left: -100px; }
+.orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, #fbbf24 0%, transparent 70%); top: 10%; left: -100px; }
+.orb-2 { width: 600px; height: 600px; background: radial-gradient(circle, #d97706 0%, transparent 70%); top: 50%; right: -150px; }
 
 .normal-section {
-  min-height: 85vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 120px 20px;
+  padding: 100px 20px;
   position: relative;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -344,57 +339,53 @@ h1 {
 
 .badge {
   display: inline-block;
-  padding: 6px 16px;
+  padding: 4px 14px;
   border-radius: 2px;
   background: rgba(251, 191, 36, 0.1);
   border: 1px solid rgba(251, 191, 36, 0.3);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   letter-spacing: 0.25em;
   color: #fbbf24;
   font-weight: 700;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 
 h2 { 
-  font-size: clamp(2.2rem, 4.5vw, 3.8rem); 
+  font-size: clamp(2rem, 4vw, 3.5rem); 
   font-weight: 900; 
-  margin-bottom: 1.5rem; 
+  margin-bottom: 1.2rem; 
   text-transform: uppercase;
 }
 
 p.description {
-  font-size: clamp(1rem, 1.2vw, 1.25rem);
-  line-height: 1.7;
+  font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+  line-height: 1.6;
   color: #a1a1aa;
-  max-width: 650px;
+  max-width: 620px;
   margin: 0 auto;
   font-weight: 300;
 }
 
-/* GLASS GRID & CARDS */
-.glass-grid {
+/* GRIDS E CARDS */
+.glass-grid, .fleet-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 32px;
-  margin-top: 60px;
-  perspective: 1000px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  margin-top: 50px;
 }
 
 .glass-card {
-  position: relative;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px);
-  padding: 48px 36px;
-  border-radius: 4px;
+  padding: 40px 28px;
+  border-radius: 2px;
   text-align: left;
-  transition: border-color 0.4s ease, background 0.4s ease, transform 0.1s ease-out;
-  transform-style: preserve-3d;
+  transition: border-color 0.3s ease;
 }
 
 .glass-card:hover {
-  border-color: rgba(251, 191, 36, 0.5);
-  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(251, 191, 36, 0.4);
 }
 
 .counter-group {
@@ -405,91 +396,78 @@ p.description {
 }
 
 .card-number {
-  font-size: 4rem;
+  font-size: 3.5rem;
   font-weight: 900;
   color: #ffffff;
   line-height: 1;
-  font-feature-settings: "tnum";
 }
 
 .card-unit {
-  font-size: 1.1rem;
-  letter-spacing: 0.15em;
+  font-size: 1rem;
   color: #fbbf24;
   font-weight: 800;
-  text-transform: uppercase;
 }
 
 .glass-card h3 {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  margin-bottom: 12px;
-  color: #ffffff;
+  margin-bottom: 10px;
   text-transform: uppercase;
 }
 
 .glass-card p {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: #a1a1aa;
   line-height: 1.6;
-}
-
-/* MODELOS (FROTA) */
-.fleet-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 32px;
-  margin-top: 60px;
 }
 
 .fleet-card {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 4px;
+  border-radius: 2px;
   overflow: hidden;
   text-align: left;
-  transition: transform 0.4s ease, border-color 0.4s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .fleet-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(251, 191, 36, 0.5);
+  transform: translateY(-6px);
+  border-color: rgba(251, 191, 36, 0.4);
 }
 
 .fleet-img {
-  height: 240px;
+  height: 220px;
   background-size: cover;
   background-position: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .fleet-info {
-  padding: 32px;
+  padding: 28px;
 }
 
 .fleet-cat {
-  font-size: 0.7rem;
-  letter-spacing: 0.25em;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
   color: #fbbf24;
   font-weight: 800;
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .fleet-info h3 {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 800;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   text-transform: uppercase;
 }
 
 .fleet-specs {
   list-style: none;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: #a1a1aa;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .fleet-specs li span {
@@ -499,93 +477,84 @@ p.description {
 
 /* FORMULÁRIO DE COTAÇÃO */
 .booking-panel {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 4px;
-  padding: 60px 48px;
-  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  padding: 48px 36px;
   text-align: left;
 }
 
 .panel-header {
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 36px;
 }
 
 .booking-form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
 .form-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
 }
 
 .input-group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .input-group label {
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
   color: #fbbf24;
   font-weight: 700;
 }
 
 .input-group input,
 .input-group select {
+  width: 100%;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 2px;
-  padding: 16px;
+  padding: 14px;
   color: #ffffff;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  border-radius: 2px;
   outline: none;
-  transition: border-color 0.3s ease, background 0.3s ease;
-}
-
-.input-group input:focus,
-.input-group select:focus {
-  border-color: #fbbf24;
-  background: rgba(255, 255, 255, 0.06);
 }
 
 .input-group select option {
-  background: #0d0d0d;
+  background: #000000;
   color: #ffffff;
 }
 
 .btn-submit {
   width: 100%;
-  padding: 20px;
-  margin-top: 12px;
+  padding: 18px;
   background: #fbbf24;
   color: #000000;
   border: none;
   border-radius: 2px;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 800;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
+  margin-top: 10px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 .btn-submit:hover {
   background: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
 }
 
 /* FOOTER */
 .footer {
   background: #000000;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 80px 48px 40px 48px;
+  padding: 60px 40px 30px 40px;
 }
 
 .footer-container {
@@ -593,31 +562,31 @@ p.description {
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  gap: 60px;
+  gap: 40px;
   flex-wrap: wrap;
 }
 
 .footer-left {
-  max-width: 400px;
+  max-width: 380px;
 }
 
 .footer-left p {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: #71717a;
   line-height: 1.6;
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 .footer-links {
   display: flex;
-  gap: 80px;
+  gap: 60px;
 }
 
 .footer-links h4 {
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
   color: #fbbf24;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   font-weight: 700;
 }
 
@@ -625,21 +594,66 @@ p.description {
   display: block;
   color: #a1a1aa;
   text-decoration: none;
-  font-size: 0.85rem;
-  margin-bottom: 12px;
-  transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-  color: #ffffff;
+  font-size: 0.82rem;
+  margin-bottom: 10px;
 }
 
 .footer-bottom {
   max-width: 1100px;
-  margin: 60px auto 0 auto;
-  padding-top: 30px;
+  margin: 40px auto 0 auto;
+  padding-top: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: #52525b;
+}
+
+/* MEDIA QUERIES (RESPONSIVIDADE DISPOSITIVOS MÓVEIS) */
+@media (max-width: 868px) {
+  .navbar {
+    padding: 14px 20px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero-interface {
+    grid-template-columns: 1fr;
+    padding: 85px 20px 24px 20px;
+    align-content: center;
+  }
+
+  .hero-right {
+    display: none;
+  }
+
+  .hero-bottom-bar {
+    gap: 16px;
+    justify-content: space-between;
+  }
+
+  .scroll-prompt {
+    display: none;
+  }
+
+  .scroll-track {
+    height: 200vh;
+  }
+
+  .normal-section {
+    padding: 60px 20px;
+  }
+
+  .booking-panel {
+    padding: 30px 20px;
+  }
+
+  .footer {
+    padding: 40px 20px 20px 20px;
+  }
+
+  .footer-links {
+    gap: 40px;
+  }
 }
