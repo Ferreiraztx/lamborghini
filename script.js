@@ -3,126 +3,77 @@ gsap.registerPlugin(ScrollTrigger);
 const video = document.getElementById('scrollyVideo');
 const navbar = document.getElementById('mainNavbar');
 
-let initialized = false;
-
-// Detecção precisa de mobile/touch ou tela reduzida
-const isMobile = window.innerWidth <= 868 || ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+// Evita que a animação seja inicializada mais de uma vez
+// (antes o script rodava em DOMContentLoaded + loadedmetadata + loadeddata,
+// criando várias ScrollTriggers duplicadas e deixando tudo "tremido")
+let scrollytellingInitialized = false;
 
 if (video) {
   video.muted = true;
   video.playsInline = true;
+  video.pause();
 
-  if (isMobile) {
-    // Modo Mobile: Vídeo roda em loop continuo sem engasgar
-    video.loop = true;
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        // Trata autoplay bloqueado se necessário
-      });
-    }
-  } else {
-    // Modo PC: Pausa o vídeo para controle do tempo por scroll
+  video.play().then(() => {
     video.pause();
-  }
+  }).catch(() => {
+    video.pause();
+  });
 }
 
 function initScrollTrigger() {
-  if (initialized) return;
-  initialized = true;
+  if (scrollytellingInitialized) return;
+  scrollytellingInitialized = true;
 
   const duration = (video && !isNaN(video.duration) && video.duration > 0) ? video.duration : 10;
 
-  // Timeline principal do Hero
   let tl = gsap.timeline({
     scrollTrigger: {
       trigger: "#scrollTrack",
       start: "top top",
-      end: "bottom top",
-      scrub: 0.3,
+      end: "bottom bottom",
+      scrub: 0.1,
       pin: true,
-      pinSpacing: false, // Previne lacunas e blocos pretos na transição
+      pinSpacing: false,
       anticipatePin: 1,
       onUpdate: (self) => {
-        // Atualiza a posição do tempo do vídeo apenas no PC
-        if (!isMobile && video && duration && video.readyState >= 1) {
+        if (video && duration) {
           const targetTime = self.progress * duration;
-          if (Math.abs(video.currentTime - targetTime) > 0.02) {
+          if (Math.abs(video.currentTime - targetTime) > 0.01) {
             video.currentTime = targetTime;
           }
         }
 
-        // Alterna exibição da Navbar
-        if (self.progress > 0.05 && self.progress < 0.90) {
-          navbar.classList.add('hidden');
-        } else {
-          navbar.classList.remove('hidden');
+        if (navbar) {
+          if (self.progress > 0.05 && self.progress < 0.95) {
+            navbar.classList.add('hidden');
+          } else {
+            navbar.classList.remove('hidden');
+          }
         }
       }
     }
   });
 
-  // 1. SUMIR HERO INICIAL (0% a 15%)
-  tl.to("#heroInterface", {
-    opacity: 0,
-    y: -40,
-    filter: "blur(10px)",
-    duration: 0.15
-  }, 0);
+  // 1. HERO INITIAL (0% a 15%)
+  tl.to("#heroInterface", { opacity: 0, y: -40, filter: "blur(10px)", duration: 0.15 }, 0);
 
-  // 2. MENSAGEM 1 (15% a 35%)
-  tl.fromTo("#msg1",
-    { opacity: 0, y: 30, filter: "blur(10px)" },
-    { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.1 },
-    0.15
-  );
-  tl.to("#msg1",
-    { opacity: 0, y: -30, filter: "blur(10px)", duration: 0.1 },
-    0.30
-  );
+  // 2. MENSAGEM 1 (15% a 40%)
+  tl.fromTo("#msg1", { opacity: 0, y: 30, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.12 }, 0.15);
+  tl.to("#msg1", { opacity: 0, y: -30, filter: "blur(10px)", duration: 0.12 }, 0.35);
 
-  // 3. MENSAGEM 2 (35% a 55%)
-  tl.fromTo("#msg2",
-    { opacity: 0, y: 30, filter: "blur(10px)" },
-    { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.1 },
-    0.35
-  );
-  tl.to("#msg2",
-    { opacity: 0, y: -30, filter: "blur(10px)", duration: 0.1 },
-    0.50
-  );
+  // 3. MENSAGEM 2 (40% a 65%)
+  tl.fromTo("#msg2", { opacity: 0, y: 30, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.12 }, 0.40);
+  tl.to("#msg2", { opacity: 0, y: -30, filter: "blur(10px)", duration: 0.12 }, 0.60);
 
-  // 4. MENSAGEM 3 (55% a 75%)
-  tl.fromTo("#msg3",
-    { opacity: 0, y: 30, filter: "blur(10px)" },
-    { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.1 },
-    0.55
-  );
-  tl.to("#msg3",
-    { opacity: 0, y: -30, filter: "blur(10px)", duration: 0.1 },
-    0.70
-  );
+  // 4. MENSAGEM 3 (65% a 90%)
+  tl.fromTo("#msg3", { opacity: 0, y: 30, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.12 }, 0.65);
+  tl.to("#msg3", { opacity: 0, y: -30, filter: "blur(10px)", duration: 0.12 }, 0.88);
 
-  // 5. TRANSITION OUT DO CONTAINER DO VÍDEO (75% a 100%)
-  tl.to(".sticky-viewport", {
-    opacity: 0,
-    duration: 0.25
-  }, 0.75);
-
-  // ANIMAÇÃO DE ENTRADA DAS SEÇÕES INFERIORES
-  gsap.utils.toArray('.normal-section').forEach(section => {
-    gsap.from(section, {
-      scrollTrigger: {
-        trigger: section,
-        start: "top 85%",
-        toggleActions: "play none none reverse"
-      },
-      opacity: 0,
-      y: 40,
-      duration: 1,
-      ease: "power2.out"
-    });
-  });
+  // (Removido: fade de opacidade do .sticky-viewport aos 90%-100%.
+  // Ele deixava a tela em preto "vazio" ainda PINADA, antes da próxima
+  // seção aparecer, criando um espaço grande sem nada depois do vídeo.
+  // Agora o próprio unpin do ScrollTrigger revela a seção seguinte
+  // naturalmente, sem esse buraco.)
 
   // CONTADORES NUMÉRICOS
   gsap.utils.toArray('.card-number').forEach(counter => {
@@ -130,11 +81,7 @@ function initScrollTrigger() {
     const decimals = parseInt(counter.getAttribute('data-decimals')) || 0;
 
     gsap.to(counter, {
-      scrollTrigger: {
-        trigger: counter,
-        start: "top 85%",
-        once: true
-      },
+      scrollTrigger: { trigger: counter, start: "top 90%", once: true },
       innerText: target,
       duration: 2,
       ease: "power2.out",
@@ -145,17 +92,24 @@ function initScrollTrigger() {
     });
   });
 
-  ScrollTrigger.refresh();
+  setTimeout(() => {
+    ScrollTrigger.refresh();
+  }, 200);
 }
 
-// Inicialização imediata / resiliente
+// Se o vídeo não existir ou falhar ao carregar, inicializa mesmo assim
+// (com duração padrão de 10s) para as seções não ficarem travadas
+function fallbackInit() {
+  setTimeout(initScrollTrigger, 300);
+}
+
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
-  setTimeout(initScrollTrigger, 50);
+  fallbackInit();
 } else {
-  document.addEventListener('DOMContentLoaded', () => setTimeout(initScrollTrigger, 50));
+  document.addEventListener('DOMContentLoaded', fallbackInit);
 }
 
 if (video) {
-  video.addEventListener('loadeddata', initScrollTrigger);
   video.addEventListener('loadedmetadata', initScrollTrigger);
+  video.addEventListener('error', initScrollTrigger);
 }

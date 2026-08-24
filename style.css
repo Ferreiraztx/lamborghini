@@ -87,16 +87,24 @@ body {
 
 /* SCROLL TRACK DO VÍDEO */
 .scroll-track {
-  height: 250vh;
+  height: 180vh;
   position: relative;
   width: 100%;
+}
+
+/* Reduz a "zona morta" de scroll pinado depois que a última
+   mensagem da narrativa termina, para o usuário chegar mais
+   rápido na próxima seção */
+.scroll-track--short {
+  height: 180vh;
 }
 
 .sticky-viewport {
   position: sticky;
   top: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
   background-color: #000000;
   z-index: 1;
@@ -106,12 +114,10 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  transform: translate(-50%, -50%);
   z-index: 1;
 }
 
@@ -300,11 +306,12 @@ h1 {
   font-weight: 400;
 }
 
-/* SEÇÕES INFERIORES */
+/* SEÇÕES INFERIORES (VISIBILIDADE GARANTIDA) */
 .main-content {
   position: relative;
   z-index: 10;
   background-color: #000000;
+  margin-top: 0;
   padding-bottom: 80px;
   overflow: hidden;
 }
@@ -328,6 +335,7 @@ h1 {
   padding: 100px 20px;
   position: relative;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  opacity: 1; /* Inicia visível */
 }
 
 .container {
@@ -608,7 +616,7 @@ p.description {
   color: #52525b;
 }
 
-/* MEDIA QUERIES (RESPONSIVIDADE DISPOSITIVOS MÓVEIS) */
+/* MEDIA QUERIES (DISPOSITIVOS MÓVEIS) */
 @media (max-width: 868px) {
   .navbar {
     padding: 14px 20px;
@@ -635,10 +643,6 @@ p.description {
 
   .scroll-prompt {
     display: none;
-  }
-
-  .scroll-track {
-    height: 200vh;
   }
 
   .normal-section {
