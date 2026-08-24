@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lamborghini — Engineered by Thunder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAVBAR GLOBAL -->
+  <header class="navbar" id="mainNavbar">
+    <div class="logo">LAMBORGHINI</div>
+    <nav class="nav-links">
+      <a href="#performance">Performance</a>
+      <a href="#modelos">Modelos</a>
+      <a href="#aerodinamica">Aerodinâmica</a>
+      <a href="#experiencia">Ad Personam</a>
+      <a href="#tecnologia">Tecnologia</a>
+    </nav>
+    <a href="#contato" class="btn-nav">Configurar</a>
+  </header>
+
+  <!-- SCROLL TRACK DO VÍDEO (SCROLLYTELLING) -->
+  <div class="scroll-track" id="scrollTrack">
+    <div class="sticky-viewport">
+      
+      <!-- Vídeo em Background -->
+      <video 
+        id="scrollyVideo" 
+        class="video-background" 
+        src="video/hero-otimizado.mp4" 
+        poster="assets/poster.jpg"
+        muted 
+        playsinline 
+        preload="auto">
+      </video>
+
+      <div class="overlay"></div>
+
+      <!-- TELA INICIAL (HERO LAMBORGHINI) -->
+      <div class="hero-interface" id="heroInterface">
+        <div class="hero-left">
+          <span class="tagline">SUPER SPORTS CARS — HIGH PERFORMANCE</span>
+          <h1>BUILT TO<br>MOVE YOU</h1>
+          <p class="hero-desc">
+            A combinação suprema de design agressivo, aerodinâmica de pista e motorização híbrida V12 de última geração.
+          </p>
+          <div class="hero-actions">
+            <div class="route-pill">0 - 100 KM/H ➔ 2.5s</div>
+            <a href="#contato" class="btn-solid">MONTAR O SEU ➔</a>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="feature-card">
+            <h4>MOTOR V12 HYBRID</h4>
+            <p>1015 CV de potência combinada</p>
+          </div>
+          <div class="feature-card">
+            <h4>AERODINÂMICA ATIVA</h4>
+            <p>Downforce aumentado em +61%</p>
+          </div>
+          <div class="feature-card">
+            <h4>CHASSI MONOFUSILAGE</h4>
+            <p>Fibra de carbono ultra leve</p>
+          </div>
+        </div>
+
+        <div class="hero-bottom-bar">
+          <div class="bar-item">
+            <strong>VELOCIDADE MÁXIMA</strong>
+            <span>350+ km/h</span>
+          </div>
+          <div class="bar-item">
+            <strong>TRACÇÃO INTEGRAL</strong>
+            <span>e-4WD Vetorização de Torque</span>
+          </div>
+          <div class="bar-item">
+            <strong>AD PERSONAM</strong>
+            <span>Personalização ilimitada</span>
+          </div>
+        </div>
+
+        <div class="scroll-prompt" id="scrollPrompt">
+          ROLE PARA ACELERAR ↓
+        </div>
+      </div>
+
+      <!-- SEQUÊNCIA NARRATIVA NO VÍDEO -->
+      <div class="content-layer">
+        <div id="msg1" class="narrative-step">
+          <h2>Beyond the Concrete.</h2>
+          <p>O rugido do motor acorda a estrada no canyon.</p>
+        </div>
+        <div id="msg2" class="narrative-step">
+          <h2>Power meets precision.</h2>
+          <p>Engenharia italiana moldada para desafiar a física em cada curva.</p>
+        </div>
+        <div id="msg3" class="narrative-step">
+          <h2>The future is electric.</h2>
+          <p>Luzes neon cortam a noite. A nova era do desempenho híbrido.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SEÇÕES INFERIORES -->
+  <main class="main-content">
+    
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+
+    <!-- SEÇÃO: PERFORMANCE & NÚMEROS -->
+    <section class="normal-section engineering-section" id="performance">
+      <div class="container">
+        <span class="badge">ENGINERING & SPEED</span>
+        <h2>Performance Absoluta</h2>
+        <p class="description">
+          Sinta a aceleração brutal impulsionada por três motores elétricos aliados ao aspirado V12.
+        </p>
+
+        <div class="glass-grid">
+          <div class="glass-card tilt-card">
+            <div class="counter-group">
+              <span class="card-number" data-target="1015" data-decimals="0">0</span>
+              <span class="card-unit">CV</span>
+            </div>
+            <h3>Potência Total</h3>
+            <p>A união perfecta entre combustão de alta rotação e torque elétrico instantâneo.</p>
+          </div>
+
+          <div class="glass-card tilt-card">
+            <div class="counter-group">
+              <span class="card-number" data-target="2.5" data-decimals="1">0</span>
+              <span class="card-unit">Seg</span>
+            </div>
+            <h3>0 a 100 km/h</h3>
+            <p>Arrancada devastadora com controle de tração de nível de corrida.</p>
+          </div>
+
+          <div class="glass-card tilt-card">
+            <div class="counter-group">
+              <span class="card-number" data-target="350" data-decimals="0">0</span>
+              <span class="card-unit">km/h</span>
+            </div>
+            <h3>Velocidade Final</h3>
+            <p>Estabilidade inabalável em velocidades extremas graças ao assoalho com efeito solo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO: MODELOS -->
+    <section class="normal-section aeronaves-section" id="modelos">
+      <div class="container">
+        <span class="badge">NOSSOS SÚPER ESPORTIVOS</span>
+        <h2>A Linhagem dos Touros</h2>
+        <p class="description">
+          Cada modelo carrega a herança de Sant'Agata Bolognese em sua forma mais pura.
+        </p>
+
+        <div class="fleet-grid">
+          <div class="fleet-card">
+            <div class="fleet-img" style="background-image: url('https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?q=80&w=800');"></div>
+            <div class="fleet-info">
+              <span class="fleet-cat">V12 HYBRID HPEV</span>
+              <h3>Revuelto</h3>
+              <ul class="fleet-specs">
+                <li><span>Potência:</span> 1015 CV</li>
+                <li><span>Câmbio:</span> 8 marchas dupla embreagem</li>
+                <li><span>Velocidade:</span> > 350 km/h</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="fleet-card">
+            <div class="fleet-img" style="background-image: url('https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=800');"></div>
+            <div class="fleet-info">
+              <span class="fleet-cat">SUPER SUV</span>
+              <h3>Urus SE</h3>
+              <ul class="fleet-specs">
+                <li><span>Potência:</span> 800 CV</li>
+                <li><span>Aceleração:</span> 0-100 km/h em 3.4s</li>
+                <li><span>Tração:</span> Integral permanente</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="fleet-card">
+            <div class="fleet-img" style="background-image: url('https://images.unsplash.com/photo-1621135802920-133df287f89c?q=80&w=800');"></div>
+            <div class="fleet-info">
+              <span class="fleet-cat">V10 ALL-TERRAIN</span>
+              <h3>Huracán Sterrato</h3>
+              <ul class="fleet-specs">
+                <li><span>Potência:</span> 610 CV</li>
+                <li><span>Suspensão:</span> Elevada +44mm</li>
+                <li><span>Modo:</span> Rally dedicado</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO: FORMULÁRIO / CONFIGURADOR -->
+    <section class="normal-section cta-section" id="contato">
+      <div class="container">
+        <div class="booking-panel">
+          <div class="panel-header">
+            <span class="badge">SOLICITE UM ATENDIMENTO</span>
+            <h2>Inicie sua Configuração</h2>
+            <p>Agende uma sessão exclusiva com um especialista Ad Personam.</p>
+          </div>
+
+          <form class="booking-form" onsubmit="event.preventDefault();">
+            <div class="form-row">
+              <div class="input-group">
+                <label>NOME COMPLETO</label>
+                <input type="text" placeholder="Seu nome" required>
+              </div>
+              <div class="input-group">
+                <label>E-MAIL</label>
+                <input type="email" placeholder="seuemail@exemplo.com" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="input-group">
+                <label>MODELO DE INTERESSE</label>
+                <select>
+                  <option>Lamborghini Revuelto</option>
+                  <option>Lamborghini Urus SE</option>
+                  <option>Lamborghini Huracán Sterrato</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>CONCESSIONÁRIA MAIS PRÓXIMA</label>
+                <input type="text" placeholder="Ex: São Paulo, SP" required>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-submit">
+              <span>SOLICITAR CONTATO EXCLUSIVO ➔</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="logo">LAMBORGHINI</div>
+        <p>Automobili Lamborghini S.p.A. Design, performance e inovação moldados sem nenhum compromisso.</p>
+      </div>
+
+      <div class="footer-links">
+        <div>
+          <h4>MODELOS</h4>
+          <a href="#modelos">Revuelto</a>
+          <a href="#modelos">Urus SE</a>
+          <a href="#modelos">Huracán</a>
+        </div>
+        <div>
+          <h4>MARCA</h4>
+          <a href="#performance">Performance</a>
+          <a href="#contato">Ad Personam</a>
+          <a href="#contato">Contato</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Automobili Lamborghini S.p.A. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
