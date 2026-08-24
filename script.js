@@ -2,15 +2,20 @@ gsap.registerPlugin(ScrollTrigger);
 
 const video = document.getElementById('scrollyVideo');
 const navbar = document.getElementById('mainNavbar');
+let initialized = false;
 
 if (video) {
   video.muted = true;
-  video.pause();
+  video.playsInline = true;
 }
 
 function initScrollTrigger() {
+  if (initialized) return; // Evita rodar duas vezes
+  initialized = true;
+
   const duration = (video && !isNaN(video.duration) && video.duration > 0) ? video.duration : 10;
 
+  // Timeline principal do Scroll
   let tl = gsap.timeline({
     scrollTrigger: {
       trigger: "#scrollTrack",
@@ -18,16 +23,18 @@ function initScrollTrigger() {
       end: "bottom top",
       scrub: 0.3,
       pin: true,
-      pinSpacing: false, // Evita que o GSAP crie o bloco/espaço preto de preenchimento
+      pinSpacing: false,
       anticipatePin: 1,
       onUpdate: (self) => {
-        if (video && duration) {
+        // Atualiza vídeo se estiver rodando no desktop
+        if (video && duration && video.readyState >= 1) {
           const targetTime = self.progress * duration;
-          if (Math.abs(video.currentTime - targetTime) > 0.01) {
+          if (Math.abs(video.currentTime - targetTime) > 0.02) {
             video.currentTime = targetTime;
           }
         }
 
+        // Esconde/mostra Navbar
         if (self.progress > 0.05 && self.progress < 0.90) {
           navbar.classList.add('hidden');
         } else {
@@ -78,13 +85,13 @@ function initScrollTrigger() {
     0.70
   );
 
-  // 5. TRANSITION OUT (75% a 100%): Esmaeceu o vídeo e a viewport para sumir a imagem congelada
+  // 5. SUMIR VÍDEO NO FINAL DA ROLAGEM
   tl.to(".sticky-viewport", {
     opacity: 0,
     duration: 0.25
   }, 0.75);
 
-  // ANIMAÇÃO DAS SEÇÕES INFERIORES
+  // SEÇÕES INFERIORES
   gsap.utils.toArray('.normal-section').forEach(section => {
     gsap.from(section, {
       scrollTrigger: {
@@ -120,16 +127,18 @@ function initScrollTrigger() {
     });
   });
 
-  setTimeout(() => {
-    ScrollTrigger.refresh();
-  }, 300);
+  ScrollTrigger.refresh();
+}
+
+// INICIALIZAÇÃO GARANTIDA:
+// Tenta rodar nos eventos de mídia, mas se demorar mais de 300ms, força a montagem do site
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  setTimeout(initScrollTrigger, 100);
+} else {
+  document.addEventListener('DOMContentLoaded', () => setTimeout(initScrollTrigger, 100));
 }
 
 if (video) {
-  if (video.readyState >= 2) {
-    initScrollTrigger();
-  } else {
-    video.addEventListener('loadeddata', initScrollTrigger);
-    setTimeout(initScrollTrigger, 600);
-  }
+  video.addEventListener('loadeddata', initScrollTrigger);
+  video.addEventListener('loadedmetadata', initScrollTrigger);
 }
