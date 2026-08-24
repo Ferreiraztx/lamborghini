@@ -3,9 +3,21 @@ gsap.registerPlugin(ScrollTrigger);
 const video = document.getElementById('scrollyVideo');
 const navbar = document.getElementById('mainNavbar');
 
+// Detecta se o dispositivo é mobile / touch
+const isMobile = window.innerWidth <= 768 || 'ontouchstart' in window;
+
 if (video) {
   video.muted = true;
-  video.pause();
+  video.playsInline = true;
+
+  if (isMobile) {
+    // No celular: Ativa o vídeo em loop contínuo e dá play
+    video.loop = true;
+    video.play().catch(() => {});
+  } else {
+    // No Desktop: Pausa para controle via scroll
+    video.pause();
+  }
 }
 
 function initScrollTrigger() {
@@ -18,16 +30,18 @@ function initScrollTrigger() {
       end: "bottom top",
       scrub: 0.3,
       pin: true,
-      pinSpacing: false, // Evita que o GSAP crie o bloco/espaço preto de preenchimento
+      pinSpacing: false,
       anticipatePin: 1,
       onUpdate: (self) => {
-        if (video && duration) {
+        // Atualiza tempo do vídeo APENAS no Desktop
+        if (!isMobile && video && duration) {
           const targetTime = self.progress * duration;
           if (Math.abs(video.currentTime - targetTime) > 0.01) {
             video.currentTime = targetTime;
           }
         }
 
+        // Alterna Navbar
         if (self.progress > 0.05 && self.progress < 0.90) {
           navbar.classList.add('hidden');
         } else {
@@ -37,54 +51,22 @@ function initScrollTrigger() {
     }
   });
 
-  // 1. HERO INITIAL (0% a 15%)
-  tl.to("#heroInterface", {
-    opacity: 0,
-    y: -40,
-    filter: "blur(10px)",
-    duration: 0.15
-  }, 0);
+  // NARRATIVA DAS MENSAGENS
+  tl.to("#heroInterface", { opacity: 0, y: -40, filter: "blur(10px)", duration: 0.15 }, 0);
 
-  // 2. MENSAGEM 1 (15% a 35%)
-  tl.fromTo("#msg1",
-    { opacity: 0, y: 30, filter: "blur(10px)" },
-    { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.1 },
-    0.15
-  );
-  tl.to("#msg1",
-    { opacity: 0, y: -30, filter: "blur(10px)", duration: 0.1 },
-    0.30
-  );
+  tl.fromTo("#msg1", { opacity: 0, y: 30, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.1 }, 0.15);
+  tl.to("#msg1", { opacity: 0, y: -30, filter: "blur(10px)", duration: 0.1 }, 0.30);
 
-  // 3. MENSAGEM 2 (35% a 55%)
-  tl.fromTo("#msg2",
-    { opacity: 0, y: 30, filter: "blur(10px)" },
-    { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.1 },
-    0.35
-  );
-  tl.to("#msg2",
-    { opacity: 0, y: -30, filter: "blur(10px)", duration: 0.1 },
-    0.50
-  );
+  tl.fromTo("#msg2", { opacity: 0, y: 30, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.1 }, 0.35);
+  tl.to("#msg2", { opacity: 0, y: -30, filter: "blur(10px)", duration: 0.1 }, 0.50);
 
-  // 4. MENSAGEM 3 (55% a 75%)
-  tl.fromTo("#msg3",
-    { opacity: 0, y: 30, filter: "blur(10px)" },
-    { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.1 },
-    0.55
-  );
-  tl.to("#msg3",
-    { opacity: 0, y: -30, filter: "blur(10px)", duration: 0.1 },
-    0.70
-  );
+  tl.fromTo("#msg3", { opacity: 0, y: 30, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.1 }, 0.55);
+  tl.to("#msg3", { opacity: 0, y: -30, filter: "blur(10px)", duration: 0.1 }, 0.70);
 
-  // 5. TRANSITION OUT (75% a 100%): Esmaeceu o vídeo e a viewport para sumir a imagem congelada
-  tl.to(".sticky-viewport", {
-    opacity: 0,
-    duration: 0.25
-  }, 0.75);
+  // TRANSITION OUT DO VÍDEO
+  tl.to(".sticky-viewport", { opacity: 0, duration: 0.25 }, 0.75);
 
-  // ANIMAÇÃO DAS SEÇÕES INFERIORES
+  // SEÇÕES INFERIORES
   gsap.utils.toArray('.normal-section').forEach(section => {
     gsap.from(section, {
       scrollTrigger: {
@@ -105,11 +87,7 @@ function initScrollTrigger() {
     const decimals = parseInt(counter.getAttribute('data-decimals')) || 0;
 
     gsap.to(counter, {
-      scrollTrigger: {
-        trigger: counter,
-        start: "top 85%",
-        once: true
-      },
+      scrollTrigger: { trigger: counter, start: "top 85%", once: true },
       innerText: target,
       duration: 2,
       ease: "power2.out",
@@ -120,9 +98,7 @@ function initScrollTrigger() {
     });
   });
 
-  setTimeout(() => {
-    ScrollTrigger.refresh();
-  }, 300);
+  setTimeout(() => { ScrollTrigger.refresh(); }, 300);
 }
 
 if (video) {
