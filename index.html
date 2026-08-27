@@ -3,26 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Lamborghini — Engineered by Thunder</title>
+  <title>Lamborghini — Engenharia e Alta Performance</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syncopate:wght@700;800&family=Titillium+Web:ital,wght@0,400;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- NAVBAR GLOBAL -->
   <header class="navbar" id="mainNavbar">
     <div class="logo">LAMBORGHINI</div>
     <nav class="nav-links">
-      <a href="#performance">Performance</a>
+      <a href="#performance">Desempenho</a>
       <a href="#modelos">Modelos</a>
-      <a href="#contato">Ad Personam</a>
+      <a href="#contato">Personalização</a>
     </nav>
     <a href="#contato" class="btn-nav">Configurar</a>
   </header>
 
-  <!-- SCROLL TRACK DO VÍDEO (HERO) -->
-  <div class="scroll-track scroll-track--short" id="scrollTrack">
+  <div class="scroll-track" id="scrollTrack">
     <div class="sticky-viewport">
       
+      <canvas id="videoCanvas" class="video-background" style="display: none;"></canvas>
+
       <video 
         id="scrollyVideo" 
         class="video-background" 
@@ -36,47 +41,46 @@
 
       <div class="overlay"></div>
 
-      <!-- TELA INICIAL (HERO INTERFACE) -->
       <div class="hero-interface" id="heroInterface">
         <div class="hero-left">
-          <span class="tagline">SUPER SPORTS CARS — HIGH PERFORMANCE</span>
-          <h1>BUILT TO<br>MOVE YOU</h1>
+          <span class="tagline">SUPERESPORTIVOS — ALTA PERFORMANCE</span>
+          <h1>FEITO PARA<br>DOMINAR</h1>
           <p class="hero-desc">
-            A combinação suprema de design agressivo, aerodinâmica de pista e motorização híbrida V12 de última geração.
+            A união entre design agressivo, aerodinâmica de pista e o novo conjunto híbrido V12.
           </p>
           <div class="hero-actions">
-            <div class="route-pill">0 - 100 KM/H ➔ 2.5s</div>
+            <div class="route-pill">0 a 100 km/h em 2,5s</div>
             <a href="#contato" class="btn-solid">MONTAR O SEU ➔</a>
           </div>
         </div>
 
         <div class="hero-right">
           <div class="feature-card">
-            <h4>MOTOR V12 HYBRID</h4>
-            <p>1015 CV de potência combinada</p>
+            <h4>MOTOR V12 HÍBRIDO</h4>
+            <p>1.015 cv de potência combinada</p>
           </div>
           <div class="feature-card">
             <h4>AERODINÂMICA ATIVA</h4>
-            <p>Downforce aumentado em +61%</p>
+            <p>+61% de pressão aerodinâmica</p>
           </div>
           <div class="feature-card">
-            <h4>CHASSI MONOFUSILAGE</h4>
-            <p>Fibra de carbono ultra leve</p>
+            <h4>CHASSI MONOCOQUE</h4>
+            <p>Estrutura leve em fibra de carbono</p>
           </div>
         </div>
 
         <div class="hero-bottom-bar">
           <div class="bar-item">
             <strong>VELOCIDADE MÁXIMA</strong>
-            <span>350+ km/h</span>
+            <span>Acima de 350 km/h</span>
           </div>
           <div class="bar-item">
             <strong>TRAÇÃO INTEGRAL</strong>
-            <span>e-4WD Vetorização de Torque</span>
+            <span>e-4WD com vetorização de torque</span>
           </div>
           <div class="bar-item">
-            <strong>AD PERSONAM</strong>
-            <span>Personalização ilimitada</span>
+            <strong>PROGRAMA AD PERSONAM</strong>
+            <span>Customização sob medida</span>
           </div>
         </div>
 
@@ -85,57 +89,54 @@
         </div>
       </div>
 
-      <!-- SEQUÊNCIA NARRATIVA NO VÍDEO -->
       <div class="content-layer">
         <div id="msg1" class="narrative-step">
-          <h2>Beyond the Concrete.</h2>
-          <p>O rugido do motor acorda a estrada no canyon.</p>
+          <h2>Além do Asfalto.</h2>
+          <p>O ronco do V12 ecoando pelas curvas da montanha.</p>
         </div>
         <div id="msg2" class="narrative-step">
-          <h2>Power meets precision.</h2>
-          <p>Engenharia italiana moldada para desafiar a física em cada curva.</p>
+          <h2>Força e Precisão.</h2>
+          <p>Encaixe perfeito na pista, projetado para desafiar os limites do controle.</p>
         </div>
         <div id="msg3" class="narrative-step">
-          <h2>The future is electric.</h2>
-          <p>Luzes neon cortam a noite. A nova era do desempenho híbrido.</p>
+          <h2>A Nova Era Elétrica.</h2>
+          <p>O ronco clássico combinado com a resposta imediata dos motores elétricos.</p>
         </div>
       </div>
 
     </div>
   </div>
 
-  <!-- SEÇÕES INFERIORES -->
   <main class="main-content">
     
     <div class="glow-orb orb-1"></div>
     <div class="glow-orb orb-2"></div>
 
-    <!-- SEÇÃO: PERFORMANCE -->
     <section class="normal-section engineering-section" id="performance">
       <div class="container">
-        <span class="badge">ENGINEERING & SPEED</span>
-        <h2>Performance Absoluta</h2>
+        <span class="badge">ENGENHARIA E VELOCIDADE</span>
+        <h2>Desempenho Puro</h2>
         <p class="description">
-          Sinta a aceleração brutal impulsionada por três motores elétricos aliados ao V12 aspirado.
+          Aceleração imediata gerada por três motores elétricos trabalhando em sintonia com o motor V12 aspirado.
         </p>
 
         <div class="glass-grid">
           <div class="glass-card tilt-card">
             <div class="counter-group">
               <span class="card-number" data-target="1015" data-decimals="0">0</span>
-              <span class="card-unit">CV</span>
+              <span class="card-unit">cv</span>
             </div>
-            <h3>Potência Total</h3>
-            <p>A união perfeita entre combustão de alta rotação e torque elétrico instantâneo.</p>
+            <h3>Potência Combinada</h3>
+            <p>Rotações altas no motor a combustão com entrega de torque instantânea das baterias.</p>
           </div>
 
           <div class="glass-card tilt-card">
             <div class="counter-group">
               <span class="card-number" data-target="2.5" data-decimals="1">0</span>
-              <span class="card-unit">Seg</span>
+              <span class="card-unit">s</span>
             </div>
             <h3>0 a 100 km/h</h3>
-            <p>Arrancada devastadora com controle de tração de nível de corrida.</p>
+            <p>Arrancada com controle de tração calibrado diretamente do automobilismo.</p>
           </div>
 
           <div class="glass-card tilt-card">
@@ -144,30 +145,29 @@
               <span class="card-unit">km/h</span>
             </div>
             <h3>Velocidade Final</h3>
-            <p>Estabilidade inabalável em velocidades extremas com efeito solo.</p>
+            <p>Estabilidade absoluta em altas velocidades garantida pelo fluxo de ar sob o chassi.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SEÇÃO: MODELOS -->
     <section class="normal-section aeronaves-section" id="modelos">
       <div class="container">
-        <span class="badge">NOSSOS SUPER ESPORTIVOS</span>
-        <h2>A Linhagem dos Touros</h2>
+        <span class="badge">LINHA DE ESPORTIVOS</span>
+        <h2>Nossos Modelos</h2>
         <p class="description">
-          Cada modelo carrega a herança de Sant'Agata Bolognese em sua forma mais pura.
+          A tradição de Sant'Agata Bolognese traduzida em linhas marcantes e motores de alta cilindrada.
         </p>
 
         <div class="fleet-grid">
           <div class="fleet-card">
             <div class="fleet-img" style="background-image: url('https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?q=80&w=800');"></div>
             <div class="fleet-info">
-              <span class="fleet-cat">V12 HYBRID HPEV</span>
+              <span class="fleet-cat">V12 HÍBRIDO PLUG-IN</span>
               <h3>Revuelto</h3>
               <ul class="fleet-specs">
-                <li><span>Potência:</span> 1015 CV</li>
-                <li><span>Câmbio:</span> 8 marchas dupla embreagem</li>
+                <li><span>Potência:</span> 1.015 cv</li>
+                <li><span>Câmbio:</span> Automatizado de 8 marchas</li>
                 <li><span>Velocidade:</span> > 350 km/h</li>
               </ul>
             </div>
@@ -176,11 +176,11 @@
           <div class="fleet-card">
             <div class="fleet-img" style="background-image: url('https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=800');"></div>
             <div class="fleet-info">
-              <span class="fleet-cat">SUPER SUV</span>
+              <span class="fleet-cat">SUPER SUV HÍBRIDO</span>
               <h3>Urus SE</h3>
               <ul class="fleet-specs">
-                <li><span>Potência:</span> 800 CV</li>
-                <li><span>Aceleração:</span> 0-100 km/h em 3.4s</li>
+                <li><span>Potência:</span> 800 cv</li>
+                <li><span>Aceleração:</span> 0 a 100 km/h em 3,4s</li>
                 <li><span>Tração:</span> Integral permanente</li>
               </ul>
             </div>
@@ -189,12 +189,12 @@
           <div class="fleet-card">
             <div class="fleet-img" style="background-image: url('https://images.unsplash.com/photo-1621135802920-133df287f89c?q=80&w=800');"></div>
             <div class="fleet-info">
-              <span class="fleet-cat">V10 ALL-TERRAIN</span>
+              <span class="fleet-cat">V10 OFF-ROAD</span>
               <h3>Huracán Sterrato</h3>
               <ul class="fleet-specs">
-                <li><span>Potência:</span> 610 CV</li>
-                <li><span>Suspensão:</span> Elevada +44mm</li>
-                <li><span>Modo:</span> Rally dedicado</li>
+                <li><span>Potência:</span> 610 cv</li>
+                <li><span>Suspensão:</span> Elevação de +44 mm</li>
+                <li><span>Modo de Condução:</span> Rally</li>
               </ul>
             </div>
           </div>
@@ -202,14 +202,13 @@
       </div>
     </section>
 
-    <!-- SEÇÃO: CONTATO -->
     <section class="normal-section cta-section" id="contato">
       <div class="container">
         <div class="booking-panel">
           <div class="panel-header">
-            <span class="badge">SOLICITE UM ATENDIMENTO</span>
-            <h2>Inicie sua Configuração</h2>
-            <p>Agende uma sessão exclusiva com um especialista Ad Personam.</p>
+            <span class="badge">ATENDIMENTO EXCLUSIVO</span>
+            <h2>Monte o Seu Modelo</h2>
+            <p>Entre em contato com a equipe de personalização do programa Ad Personam.</p>
           </div>
 
           <form class="booking-form" onsubmit="event.preventDefault();">
@@ -234,13 +233,13 @@
                 </select>
               </div>
               <div class="input-group">
-                <label>CIDADE / CIDADE MAIS PRÓXIMA</label>
-                <input type="text" placeholder="Ex: São Paulo, SP" required>
+                <label>CIDADE E ESTADO</label>
+                <input type="text" placeholder="Ex: Curitiba, PR" required>
               </div>
             </div>
 
             <button type="submit" class="btn-submit">
-              <span>SOLICITAR CONTATO EXCLUSIVO ➔</span>
+              <span>SOLICITAR CONTATO DA EQUIPE ➔</span>
             </button>
           </form>
         </div>
@@ -249,12 +248,11 @@
 
   </main>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-left">
         <div class="logo">LAMBORGHINI</div>
-        <p>Automobili Lamborghini S.p.A. Design, performance e inovação moldados sem nenhum compromisso.</p>
+        <p>Automobili Lamborghini S.p.A. Engenharia, desempenho e design italiano.</p>
       </div>
 
       <div class="footer-links">
@@ -265,8 +263,8 @@
           <a href="#modelos">Huracán</a>
         </div>
         <div>
-          <h4>MARCA</h4>
-          <a href="#performance">Performance</a>
+          <h4>INSTITUCIONAL</h4>
+          <a href="#performance">Desempenho</a>
           <a href="#contato">Ad Personam</a>
           <a href="#contato">Contato</a>
         </div>

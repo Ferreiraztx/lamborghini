@@ -12,7 +12,7 @@ html {
 body {
   background-color: #000000;
   color: #ffffff;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
   overflow-x: hidden;
   width: 100%;
 }
@@ -26,9 +26,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 40px;
+  padding: 20px 48px;
   z-index: 100;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 100%);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   transition: opacity 0.4s ease, transform 0.4s ease;
@@ -41,25 +41,27 @@ body {
 }
 
 .logo {
-  font-size: 1rem;
-  font-weight: 900;
-  letter-spacing: 0.25em;
+  font-family: 'Syncopate', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.35em;
   color: #ffffff;
   text-transform: uppercase;
 }
 
 .nav-links {
   display: flex;
-  gap: 28px;
+  gap: 32px;
 }
 
 .nav-links a {
+  font-family: 'Titillium Web', sans-serif;
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-weight: 500;
+  letter-spacing: 0.2em;
+  font-weight: 700;
   transition: color 0.3s ease;
 }
 
@@ -68,15 +70,16 @@ body {
 }
 
 .btn-nav {
-  padding: 8px 20px;
-  border: 1px solid rgba(251, 191, 36, 0.4);
+  font-family: 'Titillium Web', sans-serif;
+  padding: 10px 24px;
+  border: 1px solid rgba(251, 191, 36, 0.5);
   border-radius: 2px;
   color: #fbbf24;
   text-decoration: none;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.2em;
   transition: all 0.3s ease;
 }
 
@@ -87,22 +90,13 @@ body {
 
 /* SCROLL TRACK DO VÍDEO */
 .scroll-track {
-  height: 180vh;
   position: relative;
   width: 100%;
 }
 
-/* Reduz a "zona morta" de scroll pinado depois que a última
-   mensagem da narrativa termina, para o usuário chegar mais
-   rápido na próxima seção */
-.scroll-track--short {
-  height: 180vh;
-}
-
 .sticky-viewport {
-  position: sticky;
-  top: 0;
-  width: 100%;
+  position: relative;
+  width: 100vw;
   height: 100vh;
   height: 100dvh;
   overflow: hidden;
@@ -124,7 +118,7 @@ body {
 .overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.85) 100%);
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.88) 100%);
   z-index: 2;
   pointer-events: none;
 }
@@ -134,9 +128,9 @@ body {
   position: absolute;
   inset: 0;
   z-index: 3;
-  padding: 100px 48px 30px 48px;
+  padding: 110px 48px 32px 48px;
   display: grid;
-  grid-template-columns: 1fr 320px;
+  grid-template-columns: 1fr 340px;
   grid-template-rows: 1fr auto;
   align-items: center;
   gap: 20px;
@@ -146,30 +140,34 @@ body {
 }
 
 .hero-left { 
-  max-width: 650px; 
+  max-width: 680px; 
 }
 
 .tagline {
-  font-size: 0.75rem;
-  letter-spacing: 0.25em;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.3em;
   color: #fbbf24;
   font-weight: 700;
   display: block;
   margin-bottom: 0.8rem;
+  text-transform: uppercase;
 }
 
 h1 {
-  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-family: 'Titillium Web', sans-serif;
+  font-size: clamp(2.8rem, 6.5vw, 6rem);
   font-weight: 900;
-  line-height: 0.95;
-  letter-spacing: -0.03em;
+  font-style: italic;
+  line-height: 0.92;
+  letter-spacing: -0.01em;
   margin-bottom: 1.2rem;
   text-transform: uppercase;
   color: #ffffff;
 }
 
 .hero-desc {
-  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 2rem;
@@ -184,27 +182,35 @@ h1 {
 }
 
 .route-pill {
-  padding: 12px 22px;
+  font-family: 'Titillium Web', sans-serif;
+  padding: 12px 24px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
   border-radius: 2px;
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  text-transform: uppercase;
 }
 
 .btn-solid {
-  padding: 12px 26px;
+  font-family: 'Titillium Web', sans-serif;
+  padding: 12px 28px;
   background: #fbbf24;
   color: #000000;
   text-decoration: none;
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.15em;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
   border-radius: 2px;
+  text-transform: uppercase;
   transition: all 0.3s ease;
+}
+
+.btn-solid:hover {
+  background: #ffffff;
 }
 
 .hero-right {
@@ -217,22 +223,24 @@ h1 {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(15px);
-  padding: 18px;
+  padding: 18px 20px;
   border-radius: 2px;
-  border-left: 2px solid #fbbf24;
+  border-left: 3px solid #fbbf24;
 }
 
 .feature-card h4 {
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.2em;
   color: #ffffff;
   margin-bottom: 4px;
   font-weight: 700;
+  text-transform: uppercase;
 }
 
 .feature-card p {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.65);
   font-weight: 300;
 }
 
@@ -241,31 +249,35 @@ h1 {
   display: flex;
   gap: 40px;
   padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   flex-wrap: wrap;
 }
 
 .bar-item strong {
+  font-family: 'Titillium Web', sans-serif;
   display: block;
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
   color: #ffffff;
+  text-transform: uppercase;
 }
 
 .bar-item span {
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.55);
   font-weight: 300;
 }
 
 .scroll-prompt {
+  font-family: 'Titillium Web', sans-serif;
   position: absolute;
-  bottom: 16px;
+  bottom: 20px;
   right: 48px;
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   letter-spacing: 0.25em;
-  color: rgba(251, 191, 36, 0.6);
-  font-weight: 600;
+  color: rgba(251, 191, 36, 0.7);
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 /* NARRATIVA DE SOBREPOSIÇÃO */
@@ -282,7 +294,7 @@ h1 {
 .narrative-step {
   position: absolute;
   text-align: center;
-  max-width: 800px;
+  max-width: 850px;
   padding: 0 20px;
   opacity: 0;
   transform: translateY(30px);
@@ -291,22 +303,24 @@ h1 {
 }
 
 .narrative-step h2 {
-  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  font-family: 'Titillium Web', sans-serif;
+  font-size: clamp(2.4rem, 5.5vw, 4.8rem);
   font-weight: 900;
+  font-style: italic;
   margin-bottom: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   color: #ffffff;
 }
 
 .narrative-step p {
-  font-size: clamp(0.95rem, 1.3vw, 1.2rem);
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
   color: #fbbf24;
   line-height: 1.5;
   font-weight: 400;
 }
 
-/* SEÇÕES INFERIORES (VISIBILIDADE GARANTIDA) */
+/* SEÇÕES INFERIORES */
 .main-content {
   position: relative;
   z-index: 10;
@@ -319,7 +333,7 @@ h1 {
 .glow-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(150px);
+  filter: blur(160px);
   opacity: 0.12;
   pointer-events: none;
 }
@@ -335,7 +349,8 @@ h1 {
   padding: 100px 20px;
   position: relative;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  opacity: 1; /* Inicia visível */
+  background-color: #000000;
+  opacity: 1;
 }
 
 .container {
@@ -346,30 +361,35 @@ h1 {
 }
 
 .badge {
+  font-family: 'Titillium Web', sans-serif;
   display: inline-block;
-  padding: 4px 14px;
+  padding: 5px 16px;
   border-radius: 2px;
   background: rgba(251, 191, 36, 0.1);
   border: 1px solid rgba(251, 191, 36, 0.3);
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   letter-spacing: 0.25em;
   color: #fbbf24;
   font-weight: 700;
   margin-bottom: 1.2rem;
+  text-transform: uppercase;
 }
 
 h2 { 
-  font-size: clamp(2rem, 4vw, 3.5rem); 
+  font-family: 'Titillium Web', sans-serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem); 
   font-weight: 900; 
+  font-style: italic;
   margin-bottom: 1.2rem; 
   text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 p.description {
   font-size: clamp(0.95rem, 1.2vw, 1.15rem);
-  line-height: 1.6;
+  line-height: 1.65;
   color: #a1a1aa;
-  max-width: 620px;
+  max-width: 640px;
   margin: 0 auto;
   font-weight: 300;
 }
@@ -404,23 +424,29 @@ p.description {
 }
 
 .card-number {
-  font-size: 3.5rem;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 3.8rem;
   font-weight: 900;
+  font-style: italic;
   color: #ffffff;
   line-height: 1;
 }
 
 .card-unit {
-  font-size: 1rem;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 1.1rem;
   color: #fbbf24;
   font-weight: 800;
+  font-style: italic;
 }
 
 .glass-card h3 {
-  font-size: 1.2rem;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 10px;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .glass-card p {
@@ -454,24 +480,28 @@ p.description {
 }
 
 .fleet-cat {
-  font-size: 0.68rem;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 0.72rem;
   letter-spacing: 0.2em;
   color: #fbbf24;
   font-weight: 800;
   display: block;
   margin-bottom: 6px;
+  text-transform: uppercase;
 }
 
 .fleet-info h3 {
-  font-size: 1.4rem;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 1.5rem;
   font-weight: 800;
+  font-style: italic;
   margin-bottom: 14px;
   text-transform: uppercase;
 }
 
 .fleet-specs {
   list-style: none;
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   color: #a1a1aa;
   display: flex;
   flex-direction: column;
@@ -516,10 +546,12 @@ p.description {
 }
 
 .input-group label {
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
   color: #fbbf24;
   font-weight: 700;
+  text-transform: uppercase;
 }
 
 .input-group input,
@@ -540,17 +572,19 @@ p.description {
 }
 
 .btn-submit {
+  font-family: 'Titillium Web', sans-serif;
   width: 100%;
   padding: 18px;
   background: #fbbf24;
   color: #000000;
   border: none;
   border-radius: 2px;
-  font-size: 0.8rem;
-  font-weight: 800;
-  letter-spacing: 0.18em;
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
   margin-top: 10px;
   cursor: pointer;
+  text-transform: uppercase;
   transition: background 0.3s ease;
 }
 
@@ -591,11 +625,13 @@ p.description {
 }
 
 .footer-links h4 {
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
   color: #fbbf24;
   margin-bottom: 16px;
   font-weight: 700;
+  text-transform: uppercase;
 }
 
 .footer-links a {
@@ -616,7 +652,7 @@ p.description {
   color: #52525b;
 }
 
-/* MEDIA QUERIES (DISPOSITIVOS MÓVEIS) */
+/* MEDIA QUERIES (CELULAR / TABLET) */
 @media (max-width: 868px) {
   .navbar {
     padding: 14px 20px;
