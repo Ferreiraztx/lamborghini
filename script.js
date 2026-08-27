@@ -5,12 +5,15 @@ const canvas = document.getElementById('videoCanvas');
 const context = canvas ? canvas.getContext('2d') : null;
 const navbar = document.getElementById('mainNavbar');
 
-// Identifica se é celular/dispositivo móvel
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 868;
 
 let scrollytellingInitialized = false;
 
-// Declaração global da função renderFrame para evitar erros de referência
+// Variáveis para interpolação suave (elimina o travamento no celular)
+let targetVideoTime = 0;
+let currentVideoTime = 0;
+let isRendering = false;
+
 function renderFrame() {
   if (video && context && canvas && video.readyState >= 2) {
     const hRatio = canvas.width / video.videoWidth;
@@ -36,16 +39,30 @@ function resizeCanvas() {
   }
 }
 
-// Configuração exclusiva para Celular (Canvas)
+// Loop suave usando a GPU do celular (RequestAnimationFrame)
+function updateVideoSmoothly() {
+  if (isMobile) {
+    // Interpolação (lerp) para o tempo do vídeo deslizar suavemente
+    currentVideoTime += (targetVideoTime - currentVideoTime) * 0.15;
+
+    if (Math.abs(currentVideoTime - targetVideoTime) > 0.001) {
+      if (video && !isNaN(video.duration)) {
+        video.currentTime = currentVideoTime;
+      }
+      renderFrame();
+    }
+  }
+  requestAnimationFrame(updateVideoSmoothly);
+}
+
+// Configuração exclusiva para Celular
 if (isMobile && canvas && video) {
   canvas.style.display = 'block';
   video.style.display = 'none';
 
   window.addEventListener('resize', resizeCanvas);
-  video.addEventListener('seeked', renderFrame);
-  video.addEventListener('loadeddata', resizeCanvas);
 
-  // Desbloqueia reprodução no toque
+  // Desbloqueia a mídia no primeiro toque
   const unlockMobile = () => {
     video.play().then(() => {
       video.pause();
@@ -54,6 +71,9 @@ if (isMobile && canvas && video) {
     window.removeEventListener('touchstart', unlockMobile);
   };
   window.addEventListener('touchstart', unlockMobile, { once: true });
+
+  // Inicia o loop de animação contínua e suave
+  requestAnimationFrame(updateVideoSmoothly);
 }
 
 function initScrollTrigger() {
@@ -71,17 +91,20 @@ function initScrollTrigger() {
       trigger: "#scrollTrack",
       start: "top top",
       end: "+=200%",
-      scrub: true,
+      scrub: isMobile ? 0.5 : true, // Aumenta levemente a suavidade no mobile
       pin: true,
       pinSpacing: true,
       anticipatePin: 1,
       onUpdate: (self) => {
         if (video && duration) {
-          const targetTime = self.progress * duration;
-          if (Math.abs(video.currentTime - targetTime) > 0.01) {
-            video.currentTime = targetTime;
-            if (isMobile) {
-              renderFrame();
+          if (isMobile) {
+            // Atualiza o objetivo de tempo para o lerp suave processar
+            targetVideoTime = self.progress * duration;
+          } else {
+            // No PC mantém a precisão direta instantânea
+            const targetTime = self.progress * duration;
+            if (Math.abs(video.currentTime - targetTime) > 0.01) {
+              video.currentTime = targetTime;
             }
           }
         }
@@ -113,7 +136,6 @@ function initScrollTrigger() {
   tl.to("#msg3", { opacity: 0, y: -30, filter: "blur(10px)", duration: 0.10 }, 0.72);
 
   // 5. FADE OUT DO VÍDEO NO FINAL (82% a 96%)
-  // Esmaece a viewport suavemente enquanto a próxima seção sobe
   tl.to(".sticky-viewport", { opacity: 0, duration: 0.14 }, 0.82);
 
   // CONTADORES NUMÉRICOS
